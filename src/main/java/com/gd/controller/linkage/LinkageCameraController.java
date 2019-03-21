@@ -34,7 +34,7 @@ public class LinkageCameraController {
     //添加摄像机
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addCamera(@RequestBody Map<String, String> map) {
-        String site = map.get("SiteName");//位置名称
+       /* String site = map.get("SiteName");//位置名称
         System.out.println("摄像机名称：" + site);
         String url = map.get("url");//Ip地址
         String username = map.get("username");//用户名
@@ -67,11 +67,12 @@ public class LinkageCameraController {
         Camera1 camera1 = cameraServer.addCam(map2);
         this.iCameraService.add(camera1);
         //IPC摄像机则只加一个通道
-        this.channelController.addChannel(1, cameraType, cameraName, resid);
+        this.channelController.addChannel(1, cameraType, cameraName, resid);*/
 
         Map<String, Object> map3 = new HashMap<>();
         map3.put("code", "200");
-        map3.put("cameraId", resid);
+        map3.put("data", "添加摄像机的接口已关闭，请联系管理员");
+        /*map3.put("cameraId", resid);*/
         Gson gson = new Gson();
         return gson.toJson(map3);
 

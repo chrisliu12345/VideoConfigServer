@@ -122,7 +122,10 @@ public class SaveController {
             Integer ss = controller.Xor(workDay);
             saveConfig.setWorkDay(ss);
         }
-
+            if (map.get("alarmTime").equals(0)) {
+            } else {
+                saveConfig.setAlarmTime(Integer.parseInt(map.get("alarmTime").toString()));
+            }
         this.iSaveConfigService.add(saveConfig);
         }
         map1.put("code","OK");

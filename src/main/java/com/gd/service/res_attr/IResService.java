@@ -68,4 +68,6 @@ public interface IResService {
 
     void deleteTask(int ResId);
 
+    List<Res_Attr> queryAlarmList();
+
 }

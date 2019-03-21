@@ -127,4 +127,6 @@ public interface IResAttrDao {
     void deleteTaskStatus(int statusId);
      @Delete("delete from tbl_task where videoInfoID=#{ResId}")
      void deleteTask(int ResId);
+    @Select("select * from tbl_res_attr where ResType='134' or ResType='131' or ResType='132'")
+    List<Res_Attr> queryAlarmList();
 }

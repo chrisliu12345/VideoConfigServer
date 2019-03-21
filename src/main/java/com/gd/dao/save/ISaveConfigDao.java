@@ -16,8 +16,8 @@ import java.util.List;
  */
 @Repository("saveConfigDao")
 public interface ISaveConfigDao {
-    @Insert("<script>INSERT INTO tbl_storplan (CamID,StreamingID,StartTime,StopTime,WorkDay,KeepTime,IslostStop) VALUES" +
-            "(#{CamID},#{StreamingID},#{StartTime},#{StopTime},#{WorkDay},#{KeepTime},#{IslostStop})</script>")
+    @Insert("<script>INSERT INTO tbl_storplan (CamID,StreamingID,StartTime,StopTime,WorkDay,KeepTime,IslostStop,AlarmTime) VALUES" +
+            "(#{CamID},#{StreamingID},#{StartTime},#{StopTime},#{WorkDay},#{KeepTime},#{IslostStop},#{AlarmTime})</script>")
      void addForObject(SaveConfig saveConfig);
     @Select("<script>SELECT * FROM tbl_service WHERE ServiceID =(SELECT SipServiceID FROM tbl_res_attr WHERE ResID=#{id})</script>")
     Services queryForServiceID(Integer id);

@@ -20,6 +20,15 @@ public class SaveConfig {
     private String start;
     private String stop;
     private List<String> dayTemp;
+    private Integer AlarmTime;
+
+    public Integer getAlarmTime() {
+        return AlarmTime;
+    }
+
+    public void setAlarmTime(Integer alarmTime) {
+        AlarmTime = alarmTime;
+    }
 
     public String getCameraName() {
         return CameraName;

@@ -75,6 +75,11 @@ public class ResServiceImpl implements IResService {
     }
 
     @Override
+    public List<Res_Attr> queryAlarmList() {
+        return this.iResAttr.queryAlarmList();
+    }
+
+    @Override
     public void deleteTaskStatus(int statusId) {
      this.iResAttr.deleteTaskStatus(statusId);
     }

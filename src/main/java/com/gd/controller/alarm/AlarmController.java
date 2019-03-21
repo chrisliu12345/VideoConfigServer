@@ -27,6 +27,16 @@ public class AlarmController {
     private IResService iResService;
     @Autowired
     private com.gd.service.linkage.IResService linkResService;
+    //获取报警设备信息列表
+    @RequestMapping(value = "/alarmList",method = RequestMethod.GET)
+    public String getAlarmList() {
+        List<Res_Attr> resList = this.iResService.queryAlarmList();
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("code","200");
+        resultMap.put("data",resList);
+        Gson gson = new Gson();
+        return gson.toJson(resultMap);
+    }
     //查看报警联动设备
     @RequestMapping(method = RequestMethod.GET)
     public String queryForList() {
@@ -95,8 +105,8 @@ public class AlarmController {
         alarm.setAlarm_event_name(map.get("Alarm_event_name").toString());
         alarm.setInput_channel(Integer.parseInt(map.get("Input_channel").toString()));
         alarm.setAlarmMethod(Integer.parseInt(map.get("AlarmMethod").toString()));
-        String s1="{\"ctrlval\":\""+map.get("Linkage_Info").toString()+"\",\"duration\":\""
-                +map.get("Prest2").toString()+"\"}";
+        String s1="{\"ctrlval\":\""+map.get("Prest2").toString()+"\",\"duration\":\""
+                +map.get("Linkage_Info").toString()+"\"}";
         alarm.setLinkage_Info(s1);
 
         if(map.get("AlarmType")!=null){
