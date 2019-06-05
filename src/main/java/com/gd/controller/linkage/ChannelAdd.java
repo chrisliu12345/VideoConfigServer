@@ -49,10 +49,10 @@ public class ChannelAdd {
             if (name.equals("DH")) {
                 for (int i = 0; i < num; i++) {
                     Channel channel = new Channel();
-                    channel.setCamID(RandomNumber());
+                    channel.setCamID(id);
                     channel.setNvrID(id);
                     channel.setNvrChannelID(String.valueOf(i));
-                    channel.setPlayUrl("TCP://0:1");
+                    channel.setPlayUrl("TCP://0:0");
                     channel.setUseType(1);
                     this.iChannelService.addForObject(channel);
                 }

@@ -124,6 +124,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/orgtree/*",
                         "/orgtree/*/*",
                         "/save/*",
+                       "/api/hello/**",
                         "/save").permitAll()
                 .antMatchers("/auth/**").permitAll()
                 // 除上面外的所有请求全部需要鉴权认证

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -34,7 +35,7 @@ public class LinkageCameraController {
     //添加摄像机
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addCamera(@RequestBody Map<String, String> map) {
-       /* String site = map.get("SiteName");//位置名称
+       String site = map.get("SiteName");//位置名称
         System.out.println("摄像机名称：" + site);
         String url = map.get("url");//Ip地址
         String username = map.get("username");//用户名
@@ -42,6 +43,17 @@ public class LinkageCameraController {
         String Port = map.get("Port");//端口号
         String ProtocolType = map.get("ProtocolType");//摄像机类型
         int StreamingID = 2;  //转发服务ID
+         String ss=this.resService.selectLastData();
+        if(ss==null ||ss.equals("")){
+            ss="1100000000000000001";
+            BigInteger bigInteger=new BigInteger(ss+1);
+            ss=bigInteger.toString();
+        }else{
+            BigInteger bigInteger=new BigInteger(ss);
+            BigInteger bigInteger1=new BigInteger("1");
+            ss=bigInteger.add(bigInteger1).toString();
+        }
+
         //第二步向tbl_res_attr表，camera表，channel表中插入数据
         CameraAdd cameraServer = null;
         Res_Attr res_attr = null;
@@ -54,6 +66,7 @@ public class LinkageCameraController {
         map1.put("ResType", "132");
         map1.put("ProtocolType", ProtocolType);
         map1.put("Port", Port);
+        map1.put("DeviceID",ss);
         cameraServer = new CameraAdd();
         res_attr = cameraServer.add(map1);
         this.resService.add(res_attr);
@@ -67,12 +80,11 @@ public class LinkageCameraController {
         Camera1 camera1 = cameraServer.addCam(map2);
         this.iCameraService.add(camera1);
         //IPC摄像机则只加一个通道
-        this.channelController.addChannel(1, cameraType, cameraName, resid);*/
+        this.channelController.addChannel(1, cameraType, cameraName, resid);
 
         Map<String, Object> map3 = new HashMap<>();
         map3.put("code", "200");
-        map3.put("data", "添加摄像机的接口已关闭，请联系管理员");
-        /*map3.put("cameraId", resid);*/
+        map3.put("cameraId", resid);
         Gson gson = new Gson();
         return gson.toJson(map3);
 

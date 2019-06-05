@@ -46,10 +46,10 @@ public class UpDownController {
                 upDown1.setTypeName("不对接");
             }
             if(upDown1.getConnectState().equals(1)){
-                upDown1.setTypeName("上级");
+                upDown1.setTypeName("上联");
             }
             if(upDown1.getConnectState().equals(2)){
-                upDown1.setTypeName("下级");
+                upDown1.setTypeName("下联");
             }
         }
         resultMap.put("code", "0000");

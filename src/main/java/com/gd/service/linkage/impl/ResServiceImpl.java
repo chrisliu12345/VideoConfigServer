@@ -93,6 +93,11 @@ public class ResServiceImpl implements IResService {
     }
 
     @Override
+    public String selectLastData() {
+        return this.iResAttr.selectLastData();
+    }
+
+    @Override
     public Res_Attr queryForObjectidByResId(int id) {
         return this.iResAttr.queryForObjectByResId(id);
     }

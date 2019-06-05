@@ -81,4 +81,6 @@ public interface IResAttrDao {
     List<Res_Attr> queryForCameraTbl();
     @Select("select IPAddress from tbl_service where ServiceID=2")
     String queryFortblServiceByIPAddress();
+    @Select("<script>SELECT DeviceID FROM tbl_res_attr order by ResID desc limit 1</script>")
+    String selectLastData();
 }

@@ -2,12 +2,16 @@ package com.gd.controller.linkage;
 
 import com.gd.domain.camera.Camera1;
 import com.gd.domain.res_attr.Res_Attr;
+import com.gd.service.res_attr.IResService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Timestamp;
 import java.util.Map;
 
 
 public class CameraAdd {
+    @Autowired
+    private IResService resService;
     public int RandomNumber() {
         int r = (int) (Math.random() * 999999999);
         return r;
@@ -28,10 +32,9 @@ public class CameraAdd {
             res_attr.setProtocolType(q30);
         }
         if (paramMap.get("DeviceID") == null || paramMap.get("DeviceID").equals("")) {
-
             res_attr.setDeviceID(String.valueOf(RandomNumber()));
         } else {
-            res_attr.setDeviceID(String.valueOf(RandomNumber()));
+            res_attr.setDeviceID(paramMap.get("DeviceID") );
         }
         if (paramMap.get("Name") == null || paramMap.get("Name").equals("")) {
             String q3 = "null";

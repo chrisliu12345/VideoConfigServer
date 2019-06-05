@@ -32,7 +32,7 @@ public interface IResService {
      Integer queryforResIdtoChannel(Integer ss);
 
      Res_Attr DeviceIDforRes(String s);
-
+    String selectLastData();
      List<Res_Attr> queryForCameraTbl();
     String queryFortblServiceByIPAddress();
     Res_Attr queryForObjectidByResId(int id);
